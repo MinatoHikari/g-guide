@@ -18,8 +18,12 @@ Vue.config.productionTip = false
 
 import cardlink from './components/cardlink'
 import suspendcard from './components/suspendcard'
+import tipspage from './components/tipspage'
+import guidegroups from '@/components/guidegroups'
+Vue.component("guide-groups", guidegroups)
 Vue.component("card-link", cardlink)
 Vue.component("suspend-card", suspendcard)
+Vue.component("tips-page", tipspage)
 
 
 /* eslint-disable no-new */

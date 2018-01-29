@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import cardlink from '@/components/cardlink'
+import guidegroups from '@/components/guidegroups'
+import tipspage from '@/components/tipspage'
+import App from '@/App'
 
 Vue.use(Router)
 
@@ -9,7 +11,12 @@ export default new Router({
     {
       path: '/',
       name: 'root',
-      component: cardlink
+      component: guidegroups
+    },
+    {
+      path: '/tips',
+      name: 'guide',
+      component: tipspage
     }
   ]
 })

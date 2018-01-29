@@ -41,7 +41,7 @@
                 <ul class="pure-menu-list">
                   <li v-for="groups in grouplist" class="pure-menu-item pure-menu-has-children" :key="groups.name">
                     <a href="#" @touchend="alertCard" @click.prevent="alertCard" class="pure-menu-link">{{groups.name}}</a>
-                  </li> 
+                  </li>
                 </ul>
               </div>
             </transition>
@@ -52,6 +52,8 @@
       <div @click="menuBarClose" @touchend="menuBarClose" class="pure-u-sm-18-24 pure-u-md-19-24 pure-u-lg-20-24 main">
         <div id="page-list">
           <div class="pagelists">
+              <button :to="'tips'" tag="button" @click.prevent="changeRoute" >牛逼</button>
+
             <form @submit.prevent="search" class="">
               <div class="search">
                 <input v-model.trim="searchname" type="text" class="search-input" placeholder="输入搜索内容">
@@ -111,6 +113,10 @@
                     <button class="copybtn" @click="docopy" v-clipboard:copy="sortlist.link" type="button" slot="linkinfo">{{sortlist.link}}</button>
                   </card-link>
                 </div>
+              </div>
+
+              <div v-if="type==='tipspage'">
+<router-view></router-view>
               </div>
             </transition>
 
@@ -485,6 +491,10 @@ export default {
     alertCard: function(event) {
       this.suspendtype = event.target.firstChild.nodeValue;
     },
+    changeRoute: function() {
+      this.type = 'tipspage';
+      this.$router.push('/tips');
+    }
   }
 };
 </script>
