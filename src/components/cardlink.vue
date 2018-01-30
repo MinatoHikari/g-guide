@@ -17,7 +17,7 @@
 import bus from "../main";
 export default {
   name: "cardlink",
-  props:['link'],
+  props:['link',],
   data: function() {
     return {
       linkUP: false,

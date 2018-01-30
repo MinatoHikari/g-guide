@@ -375,7 +375,31 @@ ul {
     transform: translateX(-400px);
 }
 
-.fade-list-leave-to {
+.fade-tips-leave-to {
+    opacity: 0;
+    background-color: rgb(255,255,255);
+}
+
+.fade-tips-enter {
+    transform: translateY(-25px);
+    opacity: 0;
+    background-color: rgb(255,255,255);
+}
+
+.fade-tips-enter-active {
+    transition: all 1s ease;
+}
+
+.fade-tips-enter-to {
+    opacity: 100%;
+}
+
+.fade-tips-leave-active {
+    transition: opacity, background-color .5s, .5s;
+    transform: translateY(-25px);
+}
+
+.fade-tips-leave-to {
     opacity: 0;
     background-color: rgb(255,255,255);
 }
