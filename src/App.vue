@@ -2,13 +2,16 @@
   <div id="app">
     <div class="container pure-g">
       <div class="pure-u-1 pure-u-sm-6-24 pure-u-md-5-24 pure-u-lg-4-24 placeholder">
-        <transition name="fade-list" tag="ul">
+        <transition name="fade-list">
           <suspend-card v-if="suspendtype === groups.name" v-for="groups in grouplist" :key="groups.number">
             <div slot="cardtitle">{{'群号: ' + groups.number}}</div>
             <div slot="qrcode">
               <img class="qrcode" :src="groups.qrcode" alt="">
             </div>
           </suspend-card>
+        </transition>
+        <transition name="fade-tips">
+        <div v-show="showtips" class="tip">地址复制成功</div>
         </transition>
       </div>
       <div :class="{menuButtonRight: isRight}" class="pure-u-sm-6-24 pure-u-md-5-24 pure-u-lg-4-24 nav-bar">
@@ -55,7 +58,7 @@
 
             <div class="routernav">
               <button to="/" tag="button" @click.prevent="changeRoute" class="routerbutton">导航主页</button>
-<button :to="'tips'" tag="button" @click.prevent="changeRoute" class="routerbutton">使用说明</button>
+              <button :to="'tips'" tag="button" @click.prevent="changeRoute" class="routerbutton">使用说明</button>
             </div>
 
            <transition name="fade-card">
@@ -82,7 +85,7 @@
                       <a slot="pic" :href="sortlist.link" class="picbox" target="_blank">
                          <img :src="sortlist.pic">
                       </a>
-                    <button class="copybtn" v-clipboard:copy="sortlist.link" :link="sortlist.link" type="button" slot="linkinfo">{{sortlist.link}}</button>
+                    <button class="copybtn" v-clipboard:copy="sortlist.link" v-clipboard:success="onCopy"  :link="sortlist.link" type="button" slot="linkinfo">{{sortlist.link}}</button>
                   </card-link>
                 </div>
               </div>
@@ -99,7 +102,7 @@
                       <a slot="pic" :href="sortlist.link" class="picbox" target="_blank">
                          <img :src="sortlist.pic">
                       </a>
-                    <button class="copybtn" v-clipboard:copy="sortlist.link" type="button" slot="linkinfo">{{sortlist.link}}</button>
+                    <button class="copybtn" v-clipboard:copy="sortlist.link" :link="sortlist.link" v-clipboard:success="onCopy" type="button" slot="linkinfo">{{sortlist.link}}</button>
                   </card-link>
                 </div>
               </div>
@@ -116,7 +119,7 @@
                       <a slot="pic" :href="sortlist.link" class="picbox" target="_blank">
                          <img :src="sortlist.pic">
                       </a>
-                    <button class="copybtn" @click="docopy" v-clipboard:copy="sortlist.link" type="button" slot="linkinfo">{{sortlist.link}}</button>
+                    <button class="copybtn" v-clipboard:copy="sortlist.link" :link="sortlist.link" v-clipboard:success="onCopy" type="button" slot="linkinfo">{{sortlist.link}}</button>
                   </card-link>
                 </div>
               </div>
@@ -151,6 +154,8 @@ export default {
       menuloop: false,
       show: true,
       type: "nosearch",
+      //提示
+      showtips: false,
 
       cardlist1: [
         //1
@@ -406,6 +411,14 @@ export default {
     bus.$on("suspendClose", () => {
       this.suspendtype = "";
     });
+    //复制成功
+    bus.$on("copydone", () => {
+      this.showtips = true;
+      let closetips = () => {
+        this.showtips = false;
+      };
+      setTimeout(closetips, 1000);
+    });
   },
 
   //侧栏收缩
@@ -508,12 +521,32 @@ export default {
         this.type = "childpage";
         this.$router.push(rootinfo);
       }
+    },
+    //复制成功
+    onCopy: function() {
+      this.showtips = true;
+      let closetips = () => {
+        this.showtips = false;
+      };
+      setTimeout(closetips, 1000);
     }
   }
 };
 </script>
 
 <style>
+.tip {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  background-color: black;
+  color: white;
+  min-width: 100px;
+  height: 25px;
+  padding: 5px 10px 3px 10px;
+  text-align: center;
+}
+
 .copybtn {
   outline: none;
   border: 0;
@@ -536,5 +569,11 @@ export default {
   box-shadow: 2px 4px 10px rgba(204, 202, 202, 0.527);
   background-color: white;
   text-shadow: 1px 1px 1px #999999b6;
+}
+
+@media screen and (max-width: 568px) {
+  .tip {
+    left: 35%;
+  }
 }
 </style>
