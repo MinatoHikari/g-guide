@@ -19,8 +19,8 @@ Vue.config.productionTip = false
 import cardlink from './components/cardlink'
 import suspendcard from './components/suspendcard'
 import tipspage from './components/tipspage'
-import guidegroups from '@/components/guidegroups'
-Vue.component("guide-groups", guidegroups)
+import rootpage from './components/rootpage'
+Vue.component("root-page", rootpage)
 Vue.component("card-link", cardlink)
 Vue.component("suspend-card", suspendcard)
 Vue.component("tips-page", tipspage)

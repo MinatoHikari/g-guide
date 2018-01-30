@@ -19,7 +19,7 @@
         <div class="pure-menu custom-restricted-width pure-menu-scrollable pure-u-1-2 pure-u-sm-6-24 pure-u-md-5-24 pure-u-lg-4-24"
           :class="{visiable: isVisiable}">
           <div class="logo">
-            <a href="./index.html">
+            <a href="/">
               <img src="/static/img/logo.webp" alt="">
               <div class="site-name">Ztzl.Moe</div>
             </a>
@@ -52,9 +52,14 @@
       <div @click="menuBarClose" @touchend="menuBarClose" class="pure-u-sm-18-24 pure-u-md-19-24 pure-u-lg-20-24 main">
         <div id="page-list">
           <div class="pagelists">
-              <button :to="'tips'" tag="button" @click.prevent="changeRoute" >牛逼</button>
 
-            <form @submit.prevent="search" class="">
+            <div class="routernav">
+              <button to="/" tag="button" @click.prevent="changeRoute" class="routerbutton">导航主页</button>
+<button :to="'tips'" tag="button" @click.prevent="changeRoute" class="routerbutton">使用说明</button>
+            </div>
+
+           <transition name="fade-card">
+            <form  @submit.prevent="search" class="">
               <div class="search">
                 <input v-model.trim="searchname" type="text" class="search-input" placeholder="输入搜索内容">
                 <button @touchend.prevent="search" @click.prevent="search" type="submit">
@@ -62,8 +67,9 @@
                 </button>
               </div>
             </form>
+          </transition>
 
-            <transition name="fade-card" tag="ul">
+            <transition name="fade-card">
               <div v-if="type === 'nosearch'" key="noedit">
                 <div v-for="cardX in cardlist1" class="card" :id="cardX.ID" :key="cardX.name">
                   <div>
@@ -115,8 +121,8 @@
                 </div>
               </div>
 
-              <div v-if="type==='tipspage'">
-<router-view></router-view>
+              <div v-if="type==='childpage'">
+               <router-view></router-view>
               </div>
             </transition>
 
@@ -210,7 +216,7 @@ export default {
               name: "ALICESOFT",
               link: "http://www.alicesoft.com",
               pic: "../static/img/logo_alicesoft.png"
-            },
+            }
           ],
           ID: "H1"
         },
@@ -485,15 +491,23 @@ export default {
       }
       if (this.searchname === "") {
         this.type = "nosearch";
+        this.$router.push("/");
       }
     },
     //弹出群信息
     alertCard: function(event) {
       this.suspendtype = event.target.firstChild.nodeValue;
     },
-    changeRoute: function() {
-      this.type = 'tipspage';
-      this.$router.push('/tips');
+    //切换路由
+    changeRoute: function(event) {
+      let rootinfo = event.target.getAttribute("to");
+      if (event.target.firstChild.nodeValue === "导航主页") {
+        this.type = "nosearch";
+        this.$router.push("/");
+      } else {
+        this.type = "childpage";
+        this.$router.push(rootinfo);
+      }
     }
   }
 };
@@ -504,5 +518,23 @@ export default {
   outline: none;
   border: 0;
   background-color: rgb(252, 228, 255);
+}
+
+.routernav {
+  background-color: rgb(255, 242, 235);
+  margin-top: 30px;
+  margin-bottom: 50px;
+  min-height: 70px;
+}
+
+.routerbutton {
+  border: 0;
+  height: 30px;
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 110px;
+  box-shadow: 2px 4px 10px rgba(204, 202, 202, 0.527);
+  background-color: white;
+  text-shadow: 1px 1px 1px #999999b6;
 }
 </style>

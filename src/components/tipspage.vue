@@ -1,5 +1,7 @@
 <template>
-<div>说明</div>
+<div class="card">
+    <h2>说明</h2>
+    </div>
 </template>
 <script>
 export default {

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import guidegroups from '@/components/guidegroups'
+import rootpage from '@/components/rootpage'
 import tipspage from '@/components/tipspage'
 import App from '@/App'
 
@@ -11,7 +11,6 @@ export default new Router({
     {
       path: '/',
       name: 'root',
-      component: guidegroups
     },
     {
       path: '/tips',
