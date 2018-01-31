@@ -95,7 +95,7 @@
                   <div>
                     <div class="card-name">{{cardY.name}}</div>
                   </div>
-                  <card-link v-for="sortlist in cardY.sortlists" class="pure-u-1-2 pure-u-md-1-4 pure-u-lg-1-5" :key="sortlist.name">
+                  <card-link :link="sortlist.link" v-for="sortlist in cardY.sortlists" class="pure-u-1-2 pure-u-md-1-4 pure-u-lg-1-5" :key="sortlist.name">
                     <a class="linkhref" slot="link" :href="sortlist.link" target="_blank">
                       <div class="link-title" :info="sortlist.link">{{sortlist.name}}</div>
                       </a>
@@ -112,7 +112,7 @@
                   <div>
                     <div class="card-name">{{cardZ.name}}</div>
                   </div>
-                  <card-link v-for="sortlist in cardZ.sortlists" class="pure-u-1-2 pure-u-md-1-4 pure-u-lg-1-5" :key="sortlist.name">
+                  <card-link :link="sortlist.link" v-for="sortlist in cardZ.sortlists" class="pure-u-1-2 pure-u-md-1-4 pure-u-lg-1-5" :key="sortlist.name">
                     <a class="linkhref" slot="link" :href="sortlist.link" target="_blank">
                       <div class="link-title" :info="sortlist.link">{{sortlist.name}}</div>
                       </a>

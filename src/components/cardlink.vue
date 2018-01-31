@@ -5,7 +5,7 @@
         <slot name="link"></slot>
       </div>
       <slot name="pic"></slot>
-      <div class="linkicon"><i @touchend="copyPropLink" @touchstart.prevent="showLinkInfo" @mouseenter="showLinkInfo" class="czs-circle"></i></div>
+      <div class="linkicon"><i @touchend="copyPropLink" :copylink="link" @touchstart.prevent="showLinkInfo" @mouseenter="showLinkInfo" class="czs-circle"></i></div>
       <div  class="linkinfo" :class="{'infoheight':showlinkinfo}">
         <slot name="linkinfo"></slot>
       </div>
@@ -17,6 +17,7 @@
 import bus from "../main";
 export default {
   name: "cardlink",
+  props:['link'],
   data: function() {
     return {
       linkUP: false,
@@ -48,7 +49,7 @@ export default {
     },
     copyPropLink: function(e) {
       let iscopy = bus.$emit('copydone');
-      this.$copyText(e.target.parentNode.nextElementSibling.firstElementChild.firstChild.nodeValue).then(iscopy);
+      this.$copyText(e.target.getAttribute('copylink')).then(iscopy);
     }
   }
 };
