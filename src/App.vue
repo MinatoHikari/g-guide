@@ -85,7 +85,7 @@
                       <a slot="pic" :href="sortlist.link" class="picbox" target="_blank">
                          <img :src="sortlist.pic">
                       </a>
-                    <button class="copybtn" v-clipboard:copy="sortlist.link" v-clipboard:success="onCopy"  :link="sortlist.link" type="button" slot="linkinfo">{{sortlist.link}}</button>
+                    <button class="copybtn" v-clipboard:copy="sortlist.link" v-clipboard:success="onCopy" type="button" slot="linkinfo">{{sortlist.link}}</button>
                   </card-link>
                 </div>
               </div>
@@ -102,7 +102,7 @@
                       <a slot="pic" :href="sortlist.link" class="picbox" target="_blank">
                          <img :src="sortlist.pic">
                       </a>
-                    <button class="copybtn" v-clipboard:copy="sortlist.link" :link="sortlist.link" v-clipboard:success="onCopy" type="button" slot="linkinfo">{{sortlist.link}}</button>
+                    <button class="copybtn"  v-clipboard:copy="sortlist.link" v-clipboard:success="onCopy" type="button" slot="linkinfo">{{sortlist.link}}</button>
                   </card-link>
                 </div>
               </div>
@@ -119,7 +119,7 @@
                       <a slot="pic" :href="sortlist.link" class="picbox" target="_blank">
                          <img :src="sortlist.pic">
                       </a>
-                    <button class="copybtn" v-clipboard:copy="sortlist.link" :link="sortlist.link" v-clipboard:success="onCopy" type="button" slot="linkinfo">{{sortlist.link}}</button>
+                    <button class="copybtn" v-clipboard:copy="sortlist.link" v-clipboard:success="onCopy" type="button" slot="linkinfo">{{sortlist.link}}</button>
                   </card-link>
                 </div>
               </div>
@@ -529,7 +529,7 @@ export default {
         this.showtips = false;
       };
       setTimeout(closetips, 1000);
-    }
+    },
   }
 };
 </script>
