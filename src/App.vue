@@ -413,11 +413,7 @@ export default {
     });
     //复制成功
     bus.$on("copydone", () => {
-      this.showtips = true;
-      let closetips = () => {
-        this.showtips = false;
-      };
-      setTimeout(closetips, 1000);
+      this.onCopy();
     });
   },
 
