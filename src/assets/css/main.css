@@ -52,7 +52,7 @@ ul {
 
 .card {
     background-color: rgb(255, 242, 235);
-    margin: 30px 0;
+    margin: 40px 0 75px 0;
     display: block;
     padding: 10px;
     min-height: 150px;
@@ -214,6 +214,9 @@ ul {
   }
 
 @media screen and (max-width: 568px) {
+    .card {
+        margin: 30px 0;
+    }
     .float-link-shadow {
         box-shadow: 0 0 15px rgba(239, 248, 153, 0.527);
     }
@@ -373,6 +376,11 @@ ul {
 .fade-list-leave-active {
     transition: opacity, background-color .5s, .5s;
     transform: translateX(-400px);
+}
+
+.fade-list-leave-to {
+    opacity: 0;
+    background-color: rgb(255,255,255);
 }
 
 .fade-tips-leave-to {
