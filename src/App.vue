@@ -533,64 +533,6 @@
 </script>
 
 <style>
-  .tip {
-    position: fixed;
-    top: 0;
-    left: 50%;
-    background-color: black;
-    color: white;
-    min-width: 100px;
-    height: 25px;
-    padding: 5px 10px 3px 10px;
-    text-align: center;
-  }
-
-  .menu-height-origin {
-    height: 37px;
-    opacity: 1;
-    font-size: unset;
-    transition: all 0.4s ease;
-  }
-
-  .menu-height {
-    height: 0;
-    visibility: 0;
-    font-size: 0;
-    opacity: 0;
-    transition: all 0.4s ease;
-  }
-
-  .copybtn {
-    outline: none;
-    border: 0;
-    background-color: rgb(252, 228, 255);
-  }
-
-  .routernav {
-    background-color: rgb(255, 242, 235);
-    margin-top: 30px;
-    margin-bottom: 50px;
-    min-height: 70px;
-  }
-
-  .routerbutton {
-    border: 0;
-    height: 30px;
-    margin-top: 20px;
-    margin-left: 20px;
-    width: 110px;
-    box-shadow: 2px 4px 10px rgba(204, 202, 202, 0.527);
-    background-color: white;
-    text-shadow: 1px 1px 1px #999999b6;
-  }
-
-  @media screen and (max-width: 568px) {
-    .tip {
-      left: 35%;
-    }
-    .routerbutton {
-      width: 41%;
-    }
-  }
+  
 
 </style>
